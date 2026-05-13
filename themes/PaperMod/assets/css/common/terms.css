@@ -1,0 +1,178 @@
+/* Container for tags - Flexbox for desktop layout */
+.terms-tags {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping when needed */
+    gap: 16px; /* Space between buttons */
+    justify-content: center; /* Center the buttons */
+}
+
+/* Base Styles for Programming Theme */
+.terms-tags li {
+    list-style-type: none; /* Remove default list style */
+    margin: 0;
+}
+
+.terms-tags a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px; /* Touch-friendly padding */
+    background: linear-gradient(135deg, #1c1e26 30%, #292d3e 100%);
+    border-radius: 12px;
+    text-decoration: none;
+    border: 1px solid;
+    transition: transform 0.2s ease, background 0.2s ease, border 0.2s ease, color 0.2s ease;
+    box-shadow: 0px 4px 12px rgba(0, 255, 159, 0.3);
+    position: relative;
+    letter-spacing: 0.05em;
+    text-align: center;
+    min-width: 160px; /* Ensure consistent button size */
+    font-family: 'Fira Code', monospace;
+    font-size: 16px;
+}
+
+/* Desktop Hover and Active Effect: Fill with individual colors and adjust text for readability */
+@media (min-width: 720px) {
+    .terms-tags a:hover,
+    .terms-tags a.active {
+        transform: translateY(-5px); /* Lift on hover or active */
+    }
+
+    /* All */
+    .terms-tags li:nth-child(1) a:hover,
+    .terms-tags li:nth-child(1) a.active {
+        background: #f2f2f2; /* Light grey background */
+        color: #1c1e26; /* Dark text for contrast */
+        border: 1px solid #f2f2f2;
+    }
+
+    /* Data */
+    .terms-tags li:nth-child(2) a:hover,
+    .terms-tags li:nth-child(2) a.active {
+        background: #00c4ff; /* Bright blue */
+        color: #1c1e26; /* Dark text for contrast */
+        border: 1px solid #00c4ff;
+    }
+
+    /* Insurance */
+    .terms-tags li:nth-child(3) a:hover,
+    .terms-tags li:nth-child(3) a.active {
+        background: #00ff9f; /* Neon green */
+        color: #1c1e26; /* Dark text for contrast */
+        border: 1px solid #00ff9f;
+    }
+
+    /* Bitcoin */
+    .terms-tags li:nth-child(4) a:hover,
+    .terms-tags li:nth-child(4) a.active {
+        background: #ffae00; /* Bright orange */
+        color: #1c1e26; /* Dark text for contrast */
+        border: 1px solid #ffae00;
+    }
+}
+
+/* Mobile styles - 2x2 grid layout for buttons */
+@media (max-width: 720px) {
+    .terms-tags {
+        display: grid; /* Use grid layout */
+        grid-template-columns: repeat(2, 1fr); /* Create 2 columns */
+        gap: 16px; /* Space between buttons */
+    }
+    
+    .terms-tags li {
+        display: flex; /* Flexbox for centering content inside the grid cells */
+        justify-content: center; /* Center the content horizontally */
+        align-items: center; /* Center the content vertically */
+        margin-bottom: 0; /* Remove bottom margin as it's handled by grid gap */
+    }
+
+    .terms-tags a {
+        width: 100%; /* Make buttons full-width within the grid cells */
+        font-size: 14px; /* Larger font for readability */
+        padding: 12px; /* Increase padding for touchscreens */
+        text-align: center; /* Center text within the button */
+        transform: none; /* Ensure no scaling effect on mobile */
+    }
+
+    /* All */
+    .terms-tags li:nth-child(1) a:hover,
+    .terms-tags li:nth-child(1) a.active {
+        background: #f2f2f2; /* Light grey background */
+        color: #1c1e26; /* Dark text for contrast */
+        border: 1px solid #f2f2f2;
+    }
+
+    /* Data */
+    .terms-tags li:nth-child(2) a:hover,
+    .terms-tags li:nth-child(2) a.active {
+        background: #00c4ff; /* Bright blue */
+        color: #1c1e26; /* Dark text for contrast */
+        border: 1px solid #00c4ff;
+    }
+
+    /* Insurance (Green) */
+    .terms-tags li:nth-child(3) a:hover,
+    .terms-tags li:nth-child(3) a.active {
+        background: #00ff9f; /* Neon green */
+        color: #1c1e26; /* Dark text for contrast */
+        border: 1px solid #00ff9f;
+    }
+
+    /* Bitcoin */
+    .terms-tags li:nth-child(4) a:hover,
+    .terms-tags li:nth-child(4) a.active {
+        background: #ffae00; /* Bright orange */
+        color: #1c1e26; /* Dark text for contrast */
+        border: 1px solid #ffae00;
+    }
+}
+
+/* Customizing the colors for each category */
+
+/* All */
+.terms-tags li:nth-child(1) a {
+    border-color: #f2f2f2;
+    color: #f2f2f2;
+    box-shadow: 0px 4px 10px rgba(242, 242, 242, 0.3);
+}
+.terms-tags li:nth-child(1) a:active {
+    background: #f2f2f2;
+    color: #1c1e26;
+    box-shadow: 0px 0px 10px rgba(242, 242, 242, 0.6);
+}
+
+/* Data */
+.terms-tags li:nth-child(2) a {
+    border-color: #00c4ff;
+    color: #00c4ff;
+    box-shadow: 0px 4px 10px rgba(0, 196, 255, 0.3);
+}
+.terms-tags li:nth-child(2) a:active {
+    background: #00c4ff;
+    color: #1c1e26;
+    box-shadow: 0px 0px 10px #00c4ff99;
+}
+
+/* Insurance */
+.terms-tags li:nth-child(3) a {
+    border-color: #00ff9f;
+    color: #00ff9f;
+    box-shadow: 0px 4px 10px rgba(0, 255, 159, 0.3);
+}
+.terms-tags li:nth-child(3) a:active {
+    background: #00ff9f;
+    color: #1c1e26;
+    box-shadow: 0px 0px 10px rgba(0, 255, 159, 0.6);
+}
+
+/* Bitcoin */
+.terms-tags li:nth-child(4) a {
+    border-color: #ffae00;
+    color: #ffae00;
+    box-shadow: 0px 4px 10px rgba(255, 174, 0, 0.3);
+}
+.terms-tags li:nth-child(4) a:active {
+    background: #ffae00;
+    color: #1c1e26;
+    box-shadow: 0px 0px 10px rgba(255, 174, 0, 0.6);
+}

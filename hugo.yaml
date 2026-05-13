@@ -1,0 +1,103 @@
+
+# Basic settings
+baseURL: https://gabriel-berardi.com/
+title: Gabriel Berardi
+paginate: 5
+theme: ["PaperMod"]
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+
+# Parameters
+params:
+  title: Gabriel Berardi
+  description: "This is the website of Gabriel Berardi, M.Sc. Data Analytics"
+  keywords: [Blog, Portfolio, Data Analytics, Data Science, Business Intelligence, Insurance]
+  author: Gabriel Berardi
+  DateFormat: "2 January 2006"
+  defaultTheme: dark
+  disableThemeToggle: true
+  ShowReadingTime: true
+  ShowShareButtons: false
+  ShowPostNavLinks: false
+  ShowBreadCrumbs: false
+  ShowCodeCopyButtons: true
+
+    # Configure the social links displayed on the home page
+  socialIcons:
+    - name: "linkedin"
+      url: "https://www.linkedin.com/in/gabriel-berardi/"
+    - name: "mastodon"
+      url: "https://mastodon.social/@gabriel_berardi"
+    - name: "github"
+      url: "https://github.com/gabriel-berardi"
+    - name: "kaggle"
+      url: "https://www.kaggle.com/gabrielberardi"
+
+  profileMode:
+    enabled: true
+    title: "Hello! \U0001F44B" # in index_profile.html ausgeblendet für winkende Hand
+    first_subtitle: "My name is **Gabriel** and I am a **Data** and **Technology** enthusiast working in **Insurance**."
+    second_subtitle: "On this personal website, you will find some **content** I have produced over the last years, mainly about **data topics**, **open source software**, **technology** and **bitcoin**. You can also find some social links, information about myself and ressources I recommend."
+    imageUrl: "images/me.png"
+    imageWidth: 160
+    imageHeight: 160
+    imageTitle: "Gabriel Berardi"
+    buttons:
+      - name: "About Me"
+        url: about-me
+      - name: "Blog"
+        url: blog
+      - name: Ressources
+        url: ressources
+
+# Configure the menu of the website
+menu:
+  main:
+    - identifier: home
+      name: Home
+      url: /
+      weight: 1
+    - identifier: about
+      name: About Me
+      url: /about-me/
+      weight: 2
+    - identifier: blog
+      name: Blog
+      url: /blog/
+      weight: 3
+    - identifier: ressources
+      name: Ressources
+      url: /ressources/
+      weight: 4
+    - identifier: search
+      name: 🔎︎
+      url: /search/
+      weight: 5
+
+# Enable search on the website
+fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
+markup:
+  defaultMarkdownHandler: goldmark
+  goldmark:
+    Extensions:
+      footnote: true
+
+module:
+  imports:
+    - path: hugo-notice
+    - path: PaperMod

@@ -1,0 +1,183 @@
+{{/* Available notice types: warning, info, note, tip */}}
+
+<!-- Definiere die Farben dynamisch -->
+{{- $noticeStyle := .Get 0 | default "note" -}}
+{{- $noticeName := .Get 1 | default "" -}}
+{{- $customGreenColorBright := "#008842"}}
+{{- $customGreenColorDark := "#0d3d01"}}
+{{- $customBlueColorBright := "#003f88"}}
+{{- $customBlueColorDark := "#010f3d"}}
+{{- $customYellowColorBright := "#ba9014"}}
+{{- $customYellowColorDark := "#785d0c"}}
+{{- $customPurpleColorBright := "#580088"}}
+{{- $customPurpleColorDark := "#26013d"}}
+{{- $noticeLink := .Get 2 | default "" -}}
+
+{{/* Workaround markdownify inconsistency for single/multiple paragraphs */}}
+{{- $raw := (markdownify .Inner | chomp) -}}
+{{- $block := findRE "(?is)^<(?:address|article|aside|blockquote|canvas|dd|div|dl|dt|fieldset|figcaption|figure|footer|form|h(?:1|2|3|4|5|6)|header|hgroup|hr|li|main|nav|noscript|ol|output|p|pre|section|table|tfoot|ul|video)\\b" $raw 1 -}}
+
+{{/* Load the css if it's the first time */}}
+{{- if not ($.Page.Scratch.Get "notice-style-loaded-flag") -}}
+<style type="text/css">
+    /* Dark theme */
+    @media (prefers-color-scheme:dark) {
+        .notice {
+            --title-color: #fff;
+            --title-background-color: #069;
+            --content-color: #ddd;
+            --content-background-color: #023;
+        }
+
+        .notice.info {
+            --title-background-color: #a50;
+            --content-background-color: #420;
+        }
+
+        .notice.tip {
+            --title-background-color: #363;
+            --content-background-color: #121;
+        }
+
+        .notice.warning {
+            --title-background-color: #800;
+            --content-background-color: #400;
+        }
+
+    }
+
+    body.dark .notice {
+        --title-color: #fff;
+        --title-background-color: #069;
+        --content-color: #fff;
+        --content-background-color: #023;
+    }
+
+    body.dark .notice.info {
+        --title-background-color: #a50;
+        --content-background-color: #420;
+    }
+
+    body.dark .notice.tip {
+        --title-background-color: #363;
+        --content-background-color: #121;
+    }
+
+    body.dark .notice.warning {
+        --title-background-color: #800;
+        --content-background-color: #400;
+    }
+
+    body.dark .notice.customGreen {
+        --title-background-color: {{$customGreenColorBright}};
+        --content-background-color: {{$customGreenColorDark}};
+    }
+
+    body.dark .notice.customBlue {
+        --title-background-color: {{$customBlueColorBright}};
+        --content-background-color: {{$customBlueColorDark}};
+    }
+
+    body.dark .notice.customYellow {
+        --title-background-color: {{$customYellowColorBright}};
+        --content-background-color: {{$customYellowColorDark}};
+    }
+
+    body.dark .notice.customPurple {
+        --title-background-color: {{$customPurpleColorBright}};
+        --content-background-color: {{$customPurpleColorDark}};
+    }
+
+    /* Content */
+    .notice {
+        padding: 18px;
+        line-height: 24px;
+        margin-bottom: 24px;
+        border-radius: 4px;
+        color: var(--content-color);
+        background: var(--content-background-color);
+        text-align: justify;
+        transform: scale(1.01); /* Slightly enlarge the card */
+        transition: transform 0.2s ease, box-shadow 0.2s ease; /* Smooth hover transition */
+    }
+
+    /* Hover Effect for Cards */
+    .notice:hover {
+        transform: scale(1.05); /* Slightly enlarge the card */
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a shadow for emphasis */
+        cursor: pointer; /* Change the cursor to indicate interactivity */
+    }
+
+    .notice p:last-child {
+        margin-bottom: 0
+    }
+
+    .notice-content {
+        display: flex; /* Flexbox for aligning image and text */
+        align-items: flex-start; /* Align items at the top */
+        gap: 15px; /* Adjust spacing between image and text */
+    }
+
+    .notice img {
+        display: block;
+        max-width: 30px;  /* Limit the width to 30px */
+        max-height: 30px; /* Limit the height to 30px */
+        width: auto;
+        height: auto;
+        margin-top: 2px;
+    }
+
+    /* Title */
+    .notice-title {
+        margin: -18px -18px 12px;
+        padding: 8px 18px;
+        border-radius: 4px 4px 0 0;
+        font-weight: 700;
+        color: var(--title-color);
+        background: var(--title-background-color);
+    }
+
+    /* Icon */
+    .icon-notice {
+        display: inline-flex;
+        align-self: center;
+        margin-right: 8px;
+    }
+
+    .icon-notice img,
+    .icon-notice svg {
+        height: 1em;
+        width: 1em;
+        fill: currentColor;
+    }
+
+    .icon-notice img,
+    .icon-notice.baseline svg {
+        top: .125em;
+        position: relative;
+    }
+
+    /* Element, um Karten klickbar zu machen */
+    a {
+    text-decoration: none;
+    color: inherit;
+    margin: 0; /* Ensures no margin around the link */
+}
+
+</style>
+{{- $.Page.Scratch.Set "notice-style-loaded-flag" true -}}
+{{- end -}}
+
+<a href="{{ $noticeLink }}" target="_blank" rel="noopener noreferrer" style="display: block;">
+    <div class="notice {{ $noticeStyle }}" {{ if len .Params | eq 2 }} id="{{ .Get 1 }}" {{ end }}>
+        <p class="notice-title">
+            <span class="icon-notice baseline">
+                {{ printf "icons/%s.svg" $noticeStyle | readFile | safeHTML }}
+            </span>
+            {{- $noticeName -}}
+        </p>
+        <div class="notice-content">
+            {{- if or $block (not $raw) }}{{ $raw }}{{ else }}<p>{{ $raw }}</p>{{ end -}}
+        </div>
+    </div>
+</a>

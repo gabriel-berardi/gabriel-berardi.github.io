@@ -1,0 +1,111 @@
+#menu-trigger {
+    display: none;
+}
+
+.menu {
+    list-style: none;
+    word-break: keep-all;
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.menu li+li {
+    margin-inline-start: var(--gap);
+}
+
+.menu a {
+    font-size: 18px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 10px 15px;
+    transition: color 0.3s ease, background 0.3s ease;
+    height: 3em;
+}
+
+.menu a:hover {
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.53); /* Glow effect */
+    }
+
+.menu .active {
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.53); /* Glow effect */
+    }
+
+@media screen and (max-width: 720px) {
+    .menu {
+        list-style: none;
+        position: absolute;
+        min-width: 100vw;
+        max-width: 100vw; /* Ensure menu doesn’t exceed viewport width */
+        top: calc(var(--header-height) + var(--gap)); /* Adjust top to ensure visibility */
+        z-index: 5;
+        margin: 0; /* Reset margin */
+        padding: var(--gap);
+        background: var(--code-bg);
+        border: 2px solid var(--tertiary);
+        line-height: 2.5; 
+        overflow-y: auto; /* Add vertical scroll if needed */
+        display: flex;
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+        justify-content: center; /* Center items vertically */
+        -webkit-animation: fadein 0.15s; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 0.15s; /* Firefox < 16 */
+        -ms-animation: fadein 0.15s; /* Internet Explorer */
+         -o-animation: fadein 0.15s; /* Opera < 12.1 */
+            animation: fadein 0.15s;
+
+    }
+
+    @keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    
+    /* Firefox < 16 */
+    @-moz-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    
+    /* Safari, Chrome and Opera > 12.1 */
+    @-webkit-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+    
+    /* Internet Explorer */
+    @-ms-keyframes fadein {
+        from { opacity: 0; }
+        to   { opacity: 1; }
+    }
+
+    /* Opera < 12.1 */
+    @-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+    .list .menu {
+        background: var(--entry);
+    }
+
+    .menu li+li {
+        margin-inline-start: 0;
+    }
+
+    #menu-trigger {
+        font-size: 30px;
+        position: relative;
+        display: block;
+        float: right;
+        margin: auto var(--gap);
+    }
+
+    .menu.hidden {
+        display: none;
+    }
+}

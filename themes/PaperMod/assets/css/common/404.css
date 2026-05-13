@@ -1,0 +1,23 @@
+.not-found-title {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    font-weight: 600;
+    margin-top: 50px; /* Add space from the top */
+    margin-bottom: 0;
+    text-align: center;
+}
+
+.not-found-text {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight: 300;
+    margin-top: 25px; /* Add space from the top */
+    margin-bottom: 0;
+    text-align: center;
+}
