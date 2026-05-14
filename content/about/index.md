@@ -106,19 +106,22 @@ Azure
 
 ### 📃 Certifications
 
-June, 2023
+03/2026
+:   Microsoft Certified Azure Fundamentals
+
+06/2023
 :   Certified Professional for Requirements Engineering
 
-April, 2023
+04/2023
 :   P3.Express Practitioner
 
-March, 2023
+03/2023
 :   Professional Scrum Master I
 
-October, 2023
+10/2022
 :   Certified PRINCE2 Practitioner
 
-October, 2023
+10/2022
 :   Certified PRINCE2 Foundation
 
 ----
