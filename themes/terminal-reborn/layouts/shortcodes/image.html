@@ -1,8 +1,0 @@
-{{ if .Get "src" }}
-{{ $src := .Get "src" | safeURL }}
-{{ $alt := .Get "alt" | default "" | plainify }}
-{{ $caption := .Get "caption" | default $alt }}
-<a href="{{ $src }}" data-fancybox="post-images" data-caption="{{ $caption }}">
-  <img src="{{ $src }}" alt="{{ $alt }}" {{ with .Get "position" }}class="{{ . }}"{{ else }}class="left"{{ end }} {{ with .Get "style" }} style="{{ . | safeCSS }}" {{ end }} {{ with .Get "width" }} width="{{ . | plainify }}" {{ end }} {{ with .Get "height" }} height="{{ . | plainify }}" {{ end }} />
-</a>
-{{ end }}

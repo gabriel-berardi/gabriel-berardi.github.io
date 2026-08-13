@@ -1,0 +1,3 @@
+[submodule "themes/terminal-reborn"]
+	path = themes/terminal-reborn
+	url = git@github.com:gabriel-berardi/hugo-theme-terminal-reborn.git
