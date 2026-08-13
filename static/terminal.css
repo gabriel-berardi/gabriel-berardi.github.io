@@ -1,0 +1,12 @@
+/* Project-level overrides for the terminal-reborn theme. */
+
+:root {
+  --background: #191819;
+  --foreground: #eeeeee;
+  --accent: #74c987;
+  --radius: 0;
+  --font-size: 1.1rem;
+  --line-height: 1.55em;
+}
+
+

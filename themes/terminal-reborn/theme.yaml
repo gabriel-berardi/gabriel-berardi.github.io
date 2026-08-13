@@ -1,0 +1,34 @@
+name: Terminal Reborn
+license: MIT
+licenselink: https://github.com/gabriel-berardi/hugo-theme-terminal-reborn/blob/master/LICENSE.md
+description: A custom fork of Terminal theme for Gabriel Berardi's website
+homepage: https://www.gabriel-berardi.com/
+tags:
+  - blog
+  - clean
+  - customizable
+  - dark
+  - highlighting
+  - minimal
+  - monotone
+  - multilingual
+  - personal
+  - responsive
+  - simple
+  - technical
+  - retro
+features:
+  - blog
+  - shortcode
+  - syntax highlighting
+  - fancybox
+min_version: 0.90.0
+
+author:
+  name: Gabriel Berardi
+  homepage: https://github.com/gabriel-berardi/hugo-theme-terminal-reborn/
+
+original:
+  name: Terminal
+  author: panr
+  homepage: https://github.com/panr/hugo-theme-terminal/

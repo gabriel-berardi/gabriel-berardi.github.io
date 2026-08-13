@@ -1,0 +1,19 @@
+<div class="pagination">
+  <div class="pagination__buttons">
+    {{ with .Paginator }}
+      {{ if .HasPrev }}
+        <a href="{{ .Prev.URL }}" class="button inline prev">
+          &lt; [<span class="button__text">{{ $.Site.Params.newerPosts | default "Newer posts" }}</span>]
+        </a>
+      {{ end }}
+      {{ if and .HasPrev .HasNext }}
+        ::
+      {{ end }}
+      {{ if .HasNext }}
+        <a href="{{ .Next.URL }}" class="button inline next">
+          [<span class="button__text">{{ $.Site.Params.olderPosts | default "Older posts" }}</span>] &gt;
+        </a>
+      {{ end }}
+    {{ end }}
+  </div>
+</div>

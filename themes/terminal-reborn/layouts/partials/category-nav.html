@@ -1,0 +1,26 @@
+{{/*
+  Category navigation partial
+  Displays all categories as clickable buttons
+  Accepts currentCategory parameter to highlight active category
+  Usage: {{ partial "category-nav.html" . }}
+         {{ partial "category-nav.html" (dict "Page" . "currentCategory" $currentCat) }}
+*/}}
+
+{{/* Extract parameters */}}
+{{ $Page := .Page | default . }}
+{{ $currentCategory := .currentCategory | default "" }}
+
+{{ with $Page.Site.Taxonomies.categories }}
+  <div class="category-items category-list">
+    {{/* All button - links to the blog section */}}
+    <span class="category-link">
+      <a href="{{ "/blog/" | absLangURL }}" class="button small{{ if eq $currentCategory "" }} active{{ end }}">All</a>
+    </span>
+    {{ range .Alphabetical }}
+      {{ $isActive := eq .Page.Title $currentCategory }}
+      <span class="category-link">
+        <a href="{{ .Page.RelPermalink }}" class="button small{{ if $isActive }} active{{ end }}">{{ .Page.Title }}</a>
+      </span>
+    {{ end }}
+  </div>
+{{ end }}

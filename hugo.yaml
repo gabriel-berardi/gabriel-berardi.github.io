@@ -1,0 +1,64 @@
+baseURL: https://www.gabriel-berardi.com
+locale: en-US
+title: Gabriel Berardi
+theme: terminal-reborn
+
+pagination:
+  pagerSize: 5
+
+taxonomies:
+  category: categories
+  tag: tags
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      math: true
+  tableOfContents:
+    startLevel: 2
+    endLevel: 2
+
+params:
+  dateFormat: 02-January-2006
+  contentTypeName: posts
+  showMenuItems: 4
+  fullWidthTheme: false
+  centerTheme: true
+  toc: true
+  tocTitle: Table of Contents
+  Logo:
+    logoText: Gabriel
+    logoHomeLink: /
+  social:
+    github: https://github.com/gabriel-berardi
+    linkedin: https://linkedin.com/in/gabriel-berardi
+    mastodon: https://mastodon.social/@gabriel_berardi
+    bsky: https://bsky.app/profile/gabriel-berardi.bsky.social
+
+languages:
+  en:
+    title: Gabriel Berardi
+    copyright: ""
+    params:
+      subtitle: Data, technology, insurance, and open-source software
+      keywords: data, technology, insurance, open-source, Python, machine learning, data visualization, artificial intelligence
+      menuMore: Show more
+      readMore: " > Read more "
+      readOtherPosts: Read other posts
+    menu:
+      main:
+        - identifier: home
+          name: Home
+          url: /
+          weight: 1
+        - identifier: about
+          name: About Me
+          url: /about-me
+        - identifier: blog
+          name: Blog
+          url: /blog
+        - identifier: links
+          name: Links
+          url: /links

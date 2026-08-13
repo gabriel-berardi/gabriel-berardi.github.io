@@ -1,0 +1,38 @@
+{{ define "main" }}
+  {{ with .Content }}
+    <div class="index-content {{ if $.Params.framed -}}framed{{- end -}}">
+      {{ . }}
+      {{ if $.IsHome }}
+        {{ partial "social.html" $ }}
+      {{ end }}
+    </div>
+  {{ end }}
+
+  {{ if not .IsHome }}
+    {{/* Categories */}}
+    <h2>Categories</h2>
+    {{ partial "category-nav.html" (dict "Page" .) }}
+
+    {{/* Tags */}}
+    {{ with .Site.Taxonomies.tags }}
+      <h2>Tags</h2>
+      <div class="category-items">
+        {{ range .Alphabetical }}
+          <span class="category-link"><a href="{{ (urlize (printf "tags/%s/" .Page.Title )) | absLangURL }}">{{ .Page.Title }}</a></span>
+        {{ end }}
+      </div>
+    {{ end }}
+
+    <div class="posts">
+      <h2>Recent Posts</h2>
+      {{/* Use recursive pages to include nested posts in subdirectories */}}
+      {{ $pages := .RegularPagesRecursive }}
+      {{ $paginator := .Paginate $pages }}
+      {{ range $paginator.Pages }}
+        {{ partial "post-list-item.html" . }}
+      {{ end }}
+
+      {{ partial "pagination.html" . }}
+    </div>
+  {{ end }}
+{{ end }}

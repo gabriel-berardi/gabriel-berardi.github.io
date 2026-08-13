@@ -1,0 +1,18 @@
+# Hugo generated files
+/public/
+/resources/
+.hugo_build.lock
+
+# Test files
+/scripts/
+
+# IDE/Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
