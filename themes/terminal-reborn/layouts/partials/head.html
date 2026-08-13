@@ -15,8 +15,8 @@
 
 {{ $css := resources.Match "css/*.css" }}
 {{ range $css }}
-  {{ $styles := . | minify | fingerprint }}
-  <link rel="stylesheet" href="{{ $styles.Permalink }}">
+  {{ $styles := . | minify }}
+  <link rel="stylesheet" href="{{ $styles.RelPermalink }}">
 {{ end }}
 <!-- Custom Terminal.css styles -->
 {{ if (fileExists "static/terminal.css") -}}
